@@ -1,0 +1,385 @@
+body {
+margin:0; font-family:arial; 
+}
+
+
+nav {
+    height: 40px; width:100%;
+    background-color: #39506d;
+    position: fixed;
+    display: flex;
+    z-index: 9999;
+    
+}
+
+
+
+
+nav div {margin:auto; width: 100%; padding:0 10px; }
+nav span {float:right;}
+
+nav a, nav a:hover, nav a:visited { color: #ccad55; text-decoration: none; } 
+a.menu, a.menu:visited {margin-left: 50px; color:#c8bebe;} a.menu:hover {color:#e5e1e1;}
+
+.content {padding: 50px 10px; font-size: 12px;}
+
+.tb {width: 100%; border-collapse: collapse; font-size: 10px;}
+.tb td {border: 1px solid #9e9e9e; padding: 0; /*border-bottom: 0*/}
+
+.tb td input, .tb td select{width: 100%; border: 0; /*border-bottom: 1px solid #9e9e9e;*/ margin:0; height: 20px;}
+input, select { border: 0; border-bottom: 1px solid #9e9e9e; padding: 0; margin-left: 10px; margin-right:20px; padding: 3px; }
+
+select {padding: 0;}
+label {font-weight: bold;}
+.has-error { border-color:#cc023b; }
+
+.category {
+    background-color: #c3d1e2;
+    font-size: 20px;
+    padding: 3px 0 3px 3px;
+    width: inherit;
+}
+.error {background-color: #e68d8d;}
+
+
+.cont{width: inherit; padding: 20px 10px 20px 10px;}
+
+.contGray{width: inherit; padding: 20px 10px 20px 10px;  background-color: #ebeef1a3;}
+.contGray,  .contGray td, .contGray input, .contGray select{background-color: #ebeef1a3;}
+
+#butt_addeduc{ width: 30px; height: 30px; background-color: #c9e8d1; border-radius: 15px; text-align: center; display: inline-block; font-size: 24px; cursor: pointer; color:white;} 
+#butt_addeduc:hover{ background-color: #85e09d; }
+
+.butt_deltd { text-align: center; vertical-align: middle; color: #ff000091; font-size: 13px; font-weight: bold; cursor: pointer;  }
+
+.butt_deltd:hover{ color: red;}
+
+
+
+
+.addprof { cursor: pointer; border: 1px solid #4b9433; background-color: #84ac77; color:#fff; border-radius: 10px; width: 10px; text-align: center;
+
+}
+
+.addprof:hover { background-color: #458f21; }
+
+
+
+.delprof{
+    
+    cursor: pointer;
+    /* border: 1px solid #4b9433; */
+    /* background-color: #ff0202; */
+    /* color: #ff0202; */
+    /* border-radius: 10px; */
+    width: 10px;
+    text-align: center;
+    color: #ff0202;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.5;
+    position: absolute;
+    right: 1px;
+
+}
+
+
+
+#search_apptran_box{
+
+    margin: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: none;
+
+
+}
+
+
+
+#search_apptran_container {
+
+
+    width: 100%;
+    height: 100%;
+    max-width: 1000px;
+    max-height: 800px;
+    padding: 30px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border: 1px solid #fff;
+    background: #c2dce0;
+    text-align: center;
+
+
+}
+
+#archive_box{
+
+    margin: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    backdrop-filter: blur(3px);
+    display: none;
+}
+
+
+
+
+#archive_container {
+
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    max-height: 200px;
+    padding: 30px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border: 1px solid #fff;
+    background: #c2dce0;
+    text-align: center;
+
+
+}
+
+#close_archive_box{
+     cursor:pointer;
+}
+
+#archive_container input{margin: 0; padding: 0; height: 20px; border:1px solid;}
+
+
+
+
+
+.close_apptran_search_form {
+  cursor:pointer;
+}
+
+.search_apptran_results {widows: 100%; height: 500px; overflow: auto;}
+
+.search_apptran_results table {font-family: arial; font-size: 12px; }
+
+.search_apptran_results table tr {cursor: pointer;}
+
+.td_prof:hover {text-decoration: underline; font-weight: bold;}
+
+
+
+
+/*log form*/
+.log {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+
+.login {
+    width: 100%;
+    height: 100%;
+    max-width: 200px;
+    max-height: 150px;
+    padding: 40px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border: 1px solid #fff;
+    background: #c2dce0;
+    text-align: center;
+
+}
+
+.login input { background: #c2dce0;}
+
+
+
+
+.adminTable a, .adminTable a:visited {
+
+    text-decoration: none;
+    color:#000;
+
+}
+
+
+.hb_months {
+
+
+padding: 0 10px 0 0;
+
+}
+
+.hb_months a, .hb_months a:hover, .hb_months a:visited  { 
+
+        color: #000;
+        text-decoration: none;
+
+ }
+
+.btn_print {float: right;}
+.btn_print a, .btn_print a:hover, .btn_print a:visited  { 
+
+        color: #000;
+        text-decoration: none;
+
+
+ }
+
+
+
+
+
+
+/*dropzone*/
+
+.thumbnail {
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+}
+
+
+
+#personalDropzone, #personalGallerydropzone, 
+#showDropzone, #showGallerydropzone,
+#photoDropzone, #photoGallerydropzone {
+
+    border: 2px dashed rgba(111, 108, 111, 0.39);
+    border-radius: 4px;
+    min-height: 100px;
+
+}
+
+
+#personalDropzone, 
+#showDropzone,
+#photoDropzone {
+
+
+}
+
+
+#personalDropzone > div.thumbnail, #personalContainer > div.thumbnail,
+#showDropzone > div.thumbnail, #showContainer > div.thumbnail,
+#photoDropzone > div.thumbnail, #photoContainer > div.thumbnail{
+
+	margin: 0;
+}
+
+#personalDropzone > div.thumbnail,
+#showDropzone > div.thumbnail,
+#photoDropzone > div.thumbnail {
+
+	background:url(/public/src/images/template/progress.jpg) no-repeat;
+	background-size: 10% 100%; 
+}
+
+
+#personalDropzone > div.thumbnail  img,
+#showDropzone > div.thumbnail  img,
+#photoDropzone > div.thumbnail  img {
+
+    opacity:0.4;
+    width: 100%; 
+
+}
+
+#personalContainer span, 
+#showContainer span,
+#photoContainer span {
+
+   position: absolute;
+   top: 45%;
+   width:100%;
+   z-index: 1000;
+   display: none; 
+
+}
+
+
+#personalContainer > div.thumbnail,
+#showContainer > div.thumbnail,
+#photoContainer > div.thumbnail {
+
+    position: relative;
+
+}
+
+
+
+#personalContainer > div.thumbnail  img,
+#showContainer > div.thumbnail  img,
+#photoContainer > div.thumbnail  img {
+
+    width: 100%;
+
+
+}
+
+/*------Gallery-------------*/
+#personalGalleryDropzone,
+#showGalleryDropzone,
+#photoGalleryDropzone {
+
+min-height: 270px;
+
+}
+
+
+#personalGalleryDropzone img,
+#showGalleryDropzone img,
+#photoGalleryDropzone img {
+
+	height: 240px;
+}
+
+
+#personalGalleryDropzone span,
+#showGalleryDropzone span,
+#photoGalleryDropzone span {
+
+   position: absolute;
+   top: 45%;
+   width:100%;
+   z-index: 1000;
+  
+
+}
+
+#personalGalleryDropzone > div.thumbnail, 
+#showGalleryDropzone > div.thumbnail,
+#photoGalleryDropzone > div.thumbnail {
+
+    position: relative;
+
+}
+
+#personalGalleryContainer  img, 
+#showGalleryContainer img, 
+#photoGalleryContainer img {
+
+height: 100%;
+max-height: 230px;
+
+}

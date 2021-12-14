@@ -1,0 +1,485 @@
+.bg {
+
+	background:url(/public/src/images/template/bg_theatre_bigscene.jpg) no-repeat;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background-size: 100% 100%;
+
+}
+
+
+.bg-color {
+
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+	height: 100%;
+	position: fixed;
+	background-size: 100% 100%;
+
+}
+
+.navbar{
+
+	padding:0;
+}
+
+
+.navbar-brand{
+
+	padding-top:0;
+	padding-bottom:0;
+}
+
+.container-fluid {
+
+	/*height: 100%;*/
+	padding-top: 4rem;
+
+}
+
+
+.left, .center, .right { 
+
+	/*border:1px solid #d8d8e7;*/
+
+}
+
+.center {
+
+	text-align: center;
+	display:flex;
+	flex-flow: row wrap;
+	box-sizing: border-box;
+	justify-content:center;
+
+}
+
+
+.event {
+
+    background-color: rgba(0, 0, 0, 0.3);
+	border: 1px solid #b4935f;
+	font-family: inherit;
+	width: 200px;
+	height: 488px;
+	/*float: left;*/
+	margin:0 10 20 10;
+	
+	
+}
+
+
+.eventImage, .eventImage a {
+
+	height: 280px;
+	width: 100%;
+	display: flex;
+
+}
+
+.eventTitle  {
+
+	font-size: 14px;
+	color: #ddca7e;
+	padding:5 5 0 5;
+	vertical-align: middle;
+	display: table-cell;
+	height: 85px;
+	width: inherit;
+/*	border: 1px solid #000;*/
+
+}
+
+.eventTitle h5{
+	font-size:16.5px;
+}
+
+.eventDate{
+
+	vertical-align: middle;
+	width: inherit;
+	/*border: 1px solid #000;*/
+	display: inherit;
+	height: 55px;
+	color: #ddca7e;
+	line-height: 1.5em;
+
+}
+
+.eventPaylink{
+
+	width: inherit;
+    max-height: 58px;
+    height: 100%;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+
+
+
+.eventDay, .eventMonth, .eventTime, .eventPrice  {
+
+		color: #ddca7e;
+}
+
+.eventDay{
+
+	font-size: 24px;
+	font-weight: bold;
+}
+
+
+
+
+.person {
+
+    background-color: rgba(0, 0, 0, 0.5);
+	border: 1px solid #b4935f;
+	
+	width: 180px;
+	height: 360px;
+	/*float: left;*/
+	margin:10px;
+	
+}
+
+
+.personImage, .personImage a {
+
+	height: 255px;
+	width: 100%;
+	display: flex;
+
+}
+
+.personTitle  {
+    font-family: inherit;
+	font-size: 22px;
+	line-height: 1.2;
+	color: #ddca7e;
+	padding:5 5 0 5;
+	vertical-align: middle;
+	display: table-cell;
+	height: 85px;
+	width: inherit;
+font-weight: 300;
+
+}
+
+.personCat{
+	font-family: inherit;
+	font-size: 36px;
+	font-weight: 300;
+	width: 100%;
+	color: #f3f3f3;
+}
+
+
+
+/*personal Card*/
+.personalCard, .showCard, .newsCard, .adsList, .ads {
+background-color: rgba(0, 0, 0, 0.7);
+padding:20px;
+color: #ebebeb;
+text-align: justify;
+font-size: 18px;
+font-weight: 100;
+line-height: 1.3;
+border: 1px solid #b4935f;
+width: 80%;
+
+}
+
+.personalCard > img{
+
+	display: block;
+	float: left;
+	margin:0 20 20 0;
+	width: 100%;
+	max-width: 400px;
+}
+
+.personalName {
+
+	font-size: 45px;
+	color:#ddca7e;
+	margin-bottom: 20px;
+}
+
+/*show Card*/
+.showList {
+	width: 80%;
+	background-color: rgba(0, 0, 0, 0.7);
+	border: 1px solid #b4935f;
+	padding: 0 20 20 20;
+
+
+}
+
+.showListText{
+
+	text-align: justify;
+	color: #ddca7e;
+	font-size: 16px;
+	font-family: inherit;
+	font-weight: 100;
+	line-height: 1.2;
+	margin-bottom: 10px;
+}
+
+.showLink {
+	width: inherit;
+	text-align: left;
+	color:#587437;
+}
+
+
+.showlink a, .showLink a:visited {
+
+	color: #ebebeb;
+	font-size: 21px;
+	font-weight: 100;
+}
+
+.showCat {
+
+	width: 100%;
+	margin: 15 0;
+    font-size: 36px;
+	color:#ddca7e;
+	font-weight: 100;
+    line-height: 1.3;
+}
+
+.showCard > img {
+
+	display: block;
+	float: left;
+	margin:0 20 20 0;
+	width: 100%;
+	max-width: 400px;
+}
+
+
+.showTitle {
+
+	font-size: 36px;
+	color: #ddca7e;
+	margin-bottom: 20px;
+	text-align: left;
+}
+
+/*news*/
+.news {
+
+	width: 280px;
+	margin:0 20 20 20;
+	
+	}
+
+
+.newsImage{
+
+	display: flex;
+	width: 100%;
+	height: 200px;
+}
+
+.newsImage img{
+
+	width: inherit;
+
+}
+
+.newsBox {
+
+    background-color: rgba(0, 0, 0, 0.5);
+	border: 1px solid #b4935f;
+	padding: 0 20 20 20;
+}
+
+.newsBoxCat{
+
+	font-family: inherit;
+    font-size: 36px;
+    font-weight: 100;
+    width: 100%;
+    margin: 10 0 15 0;
+    color: #f3f3f3;
+}
+
+
+.newsTitle {
+	text-align: left;
+	line-height: 1.0;
+	margin-bottom: 10px;
+
+}
+
+.newsTitle a, .newsTitle a:hover, .newsTitle a:visited {
+
+	color: #ddca7e;
+	font-size: 18px;
+	font-weight: 500;
+
+}
+
+.newsIntro{
+
+	color: #d7d4d4;
+	text-align: left;
+	font-weight: 300;
+	
+}
+
+.newsPublicDate{
+
+	color: #ddca7e;
+	font-size: 14px;
+	font-weight: 300;
+	text-align: left;
+    opacity: 0.6;
+	margin: 10px 0;
+}
+
+
+.newsCard img{
+
+	float: left;
+	margin:0 20px 20px 0;
+	font-size: 24px;
+	width: 100%;
+	max-width: 400px;
+}
+
+.nwTitle {
+
+ 	color: #ddca7e;
+	font-size: 24px;
+	font-weight: 500;
+	margin-bottom: 5px
+}
+
+.nwPublicDate {
+
+	color: #ddca7e;
+	font-size: 14px;
+	margin-bottom: 10px
+}
+
+.closeButton{
+
+	float: right;
+}
+
+.closeButton a, .closeButton a:visited {
+
+	color: #999999;
+}
+.closeButton a:hover {
+
+	color: #ebebeb;
+}
+
+/*Media about as */
+.massMediaList {
+
+	width: 80%;
+	background-color: rgba(0, 0, 0, 0.7);
+	border: 1px solid #b4935f;
+	padding: 0 20 20 20;
+	text-align: left;
+}
+
+.massMediaTitle {
+
+	text-align: center;
+
+}
+
+.massMediaList a, .massMediaList a:hover, .massMediaList a:visited {
+
+	color: #1fdbba; 
+
+}
+
+.massMediaTitle {
+
+	margin: 15 0;
+    font-size: 36px;
+    color: #ddca7e;
+    font-weight: 100;
+    line-height: 1.3;
+}
+
+
+.footer {
+
+	display: flex;
+    flex-flow: row wrap;
+    box-sizing: border-box;
+    justify-content: center;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+	border: 1px solid #b4935f;
+	padding: 20 20 20 20;
+	font-size: 14px;
+	color:#b4935f;
+	margin-top: 15px;
+}
+
+.footer address {
+
+	margin:0;
+}
+
+.f1 , .f2, .f3 {
+
+	text-align: left;
+	margin:0 20 0 20px;
+	
+}
+
+.f1 a, .f2 a, .f3 a {
+
+	color:#b4935f;
+}
+
+
+.adsCat, .adsTitle {
+
+		margin: 15 0;
+    font-size: 36px;
+    color: #ddca7e;
+    font-weight: 100;
+    line-height: 1.3;
+}
+
+/*MEDIA RESPONCETIVE*/
+
+.brandImg {
+
+	width: 280px;
+}
+
+.navbar-toggler {
+
+	padding:0;
+
+}
+
+
+.staticGallery img{
+
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+    max-width: 100%;
+
+}
+
+
+
+
