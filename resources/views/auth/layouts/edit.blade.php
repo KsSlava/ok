@@ -1010,9 +1010,19 @@ value="{{ old('rest')!==null ? old('rest')[$i]['type'] : Arr::exists($rest, $i) 
 <br>
 
 @if($anket->public == '0')
-<label>Створити нову анкету з цієї </label><button id="btn_show_archive_box" type="button">Створити</button>
+
+    <label>Створити нову анкету з цієї </label> <button id="btn_show_from_archive" type="button">Створити</button>
+
+    @if(!$child) 
+    <br>
+    <br>
+
+    <label>Вилучити анкету з архіву</label> <button id="btn_show_return_archive" type="button">Вилучити</button>
+        
+    @endif
+
 @else
-<label>Закриття анкети </label><button id="btn_show_archive_box" type="button">Звільнити та пенеести до архіву</button>
+    <label>Закриття анкети </label><button id="btn_show_add_archive" type="button">Звільнити та пенеести до архіву</button>
 @endif
 
 
@@ -1082,65 +1092,54 @@ value="{{ old('rest')!==null ? old('rest')[$i]['type'] : Arr::exists($rest, $i) 
 <div id="archive_box">  
 
     <div id="archive_container">
+    
 
-    <div align="right"><div id="close_archive_box">X</div></div>
-    <!-- add to archive -->  
+        <div align="right"><div id="close_archive_box">X</div></div>
 
-    @if($anket->public =='0')
-    <b>УВАГА!<br/>
-    Буде створено нову анкету з цієї <br/><br/>
-    {{$personal->name}} {{$personal->sname}} {{$personal->mname}}</b>
-    <br/><br/>
-    <button id="btn_from_archive">Так, створити нову анктету з цієї</button>
-    <br/>
 
-    @else
+        <div id="cont_add_archive" style="display: none;">
+    
+            <b>УВАГА!<br/>
+            Звільнення та перенесення до архіву співробтника: <br/>
+            {{$personal->name}} {{$personal->sname}} {{$personal->mname}}</b><br/>
+            <br/>
 
-    <div id="add_to_archive">
-    <b>УВАГА!<br/>
-    Звільнення та перенесення до архіву співробтника: <br/>
-    {{$personal->name}} {{$personal->sname}} {{$personal->mname}}</b><br/>
-    <br/>
+            <label>Причина звільнення</label>
+            <br/>
+            <input  id="diss" name="diss" type="text" size="60" value="">
+            <br/>
+            <br/>
+            <label>Дата звільнення</label>
+            <br/>
+            <input  id="dissdate" name="dissdate" type="text" size="6" value="<?php echo date('d-m-Y') ?>">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <button id="btn_add_archive">Перенести до архіву</button>
+        </div>
 
-        <label>Причина звільнення</label>
-        <br/>
-        <input  id="diss" name="diss" type="text" size="60" value="">
-        <br/>
-        <br/>
-        <label>Дата звільнення</label>
-        <br/>
-        <input  id="dissdate" name="dissdate" type="text" size="6" value="<?php echo date('d-m-Y') ?>">
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <button id="btn_add_to_archive">Перенести до архіву</button>
+
+        <div id="cont_from_archive" style="display: none;">
+            <b>УВАГА!<br/>
+            Буде створено нову анкету з цієї <br/><br/>
+            {{$personal->name}} {{$personal->sname}} {{$personal->mname}}</b>
+            <br/><br/>
+            <button id="btn_from_archive">Так, створити нову анктету з цієї</button>
+            <br/> 
+        </div>
+
+        
+        <div id="cont_return_archive" style="display: none;">
+            <b>УВАГА!<br/>
+            Буде вилучено анкету з архіву <br/><br/>
+            {{$personal->name}} {{$personal->sname}} {{$personal->mname}}</b>
+            <br/><br/>
+            <button id="btn_return_archive">Так, підтверджую</button>
+            <br/>
+        </div>
+
     </div>
-
-    @endif
-
-
-    <!-- end add to archive -->
-
-
-    <!-- repair from archive -->
-
-
-    <!-- end repair from archive -->
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
     
 </div>
 

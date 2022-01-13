@@ -12,12 +12,19 @@
 	<script src="{{ url('public/src/js/helper.js') }}"></script>
 
 	<link rel="stylesheet" href="{{ url('public/src/css/admin.css') }}">
-    <script src="{{ url('public/src/js/admin.js') }}"></script>
+   
 
 	<link rel="stylesheet" href="{{ url('public/src/css/dropzone.css') }}">
 	<script src="{{ url('public/src/js/dropzone.js') }}"></script>
 
 	<script src="{{ url('public/src/js/inputmask.js') }}"></script>
+
+
+	@php 
+
+	echo Storage::disk('local')->get('public/src/js/_admin.js.php');
+
+	@endphp
 
 
 	<script type="text/javascript"> var token = '{{ Session::token() }}';</script>

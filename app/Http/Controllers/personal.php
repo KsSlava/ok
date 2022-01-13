@@ -174,13 +174,6 @@ class personal extends Controller
 				return view('auth.layouts.admin', ['prs'=>$prs, 'noprs'=>$noprs ]);
 
 			}
-
-
-
-
-		
-		
-
 	}
 
 
@@ -488,7 +481,6 @@ class personal extends Controller
 						
 					}
 				}
-
 	}
 
 
@@ -516,7 +508,6 @@ class personal extends Controller
 
 		//Rest  
 		Rest::where('tid', '=', $tid)->delete();
-
 	}
 
 
@@ -565,7 +556,6 @@ class personal extends Controller
     			return redirect()->route('edit',['tid'=>$request->tid]); 
     			
 		}
-   
 	}
 
 
@@ -615,6 +605,11 @@ class personal extends Controller
 					 ->select('a.*', 'k.*')
 					 ->where('a.tid','=',$tid)
 					 ->get();
+
+
+					//get child anket
+					$child = Anket::where('parent_tid', '=', $anket->tid)->first(); 
+
 					 
 
 					//Rest  
@@ -639,6 +634,7 @@ class personal extends Controller
 						'dateSpecExp'=>Helper::getDateSpecExp($exp),
 						'dateExpAll'=>Helper::getDateExpAll($apptran),
 						'dateSpecExpAll'=>Helper::getDateSpecExpAll($exp, $apptran),
+						'child' => $child
 
 
 					];
@@ -750,7 +746,6 @@ class personal extends Controller
 
 
 		}
-		
 	}
 
 
@@ -819,10 +814,7 @@ class personal extends Controller
 
 
 			echo json_encode($searshResults);
-
 	}
-
-
 
 
 	public function xspecexp(Request $request){
@@ -855,8 +847,6 @@ class personal extends Controller
 
 			
 		}
-
-
 	}
 
 
@@ -938,12 +928,11 @@ class personal extends Controller
 
 		
 		return view('auth.layouts.archive', ['prs'=>$prs, 'noprs'=>$noprs ]);
-
 	}
 
 
 
-
+	//add anket to archive
 	public function toArchive(Request $request){
 
 
@@ -996,11 +985,9 @@ class personal extends Controller
 		    return $error; 
 
 		}
-
 	}
 
-
-
+	//create new anket like as previous anket (copy anket)
 	public function fromArchive(Request $request){
 
 
@@ -1218,10 +1205,17 @@ class personal extends Controller
 
 
 	    }
+	}
 
-		
 
+	//return anket from archive
+	public function returnArchive(Request $request){
 
+		$tid = $request['tid'];
+
+		Anket::where('tid', '=', $tid)->update(['public'=>'1', 'diss'=>'', 'dissdate'=>'']);
+
+		return 1; 
 
 	}
 
@@ -1358,7 +1352,6 @@ class personal extends Controller
 				return view('auth.layouts.hb', $return);
 
 			}
-
 	}
 
 
@@ -1440,10 +1433,7 @@ class personal extends Controller
 				return view('auth.layouts.ann', $return);
 
 			}
-
 	}
-
-
 
 
 	public function upload(Request $request){
@@ -1632,409 +1622,7 @@ class personal extends Controller
 
 
        } 
-
-
-
-
-
 	}
-
-
-
-	// public function getNewsAdd(){
-
-	// 	return view('auth.layouts.newsAdd'); 
-	// }
-
-
-	// public function postNewsAdd(Request $request){
-
- //        $this->validate($request, [
-
-	// 		'title'       =>'required|min:5|max:100|unique:news,title',
-	// 		'intro'       =>'required|min:5|max:300',
-	// 		'catid'       =>'required|exists:news_cat,id' 
-            
- //        ]);
-
- //        $slug = str_slug($request['title'], '-'); 
-
- //        $maxOrd  = News::where('public', '=', '1')->max('ord'); 
- //        $nextOrd = $maxOrd +1;
-
- //        $query = News::insert([
-
-	// 		'id'          =>null,
-	// 		'title'       =>trim($request['title']), 
-	// 		'slug'        =>$slug,
-	// 		'intro'       =>trim($request['intro']),
-	// 		'description' =>trim($request['description']),
-	// 		'userid'      =>$this->userid,
- //            'catid'       =>$request['catid'],
- //            'ord'         =>$nextOrd,
- //            'publicDate'  =>date('Y-m-d H:i:s')
-
- //        	]);
-
-
- //        if($query){
-
- //        	return redirect()->route('getNewsEdit',['slug'=>$slug]); 
-
- //        }
-
-	// }
-
-
- //    public function getNewsEdit(Request $request)
- //    {
-           
-                   
- //        if ($request->route('slug')){
-
- //            $news = News::where('slug', '=', $request->route('slug'))->first();
- //            $newsCat = NewsCat::whereIn('id', [1, 2, 4])->get();
-
-            
- //            if ($news){
-
- //                /**
- //                *
- //                *Check & generate link of image
- //                *
- //                */
- //                // $newsImage = json_decode($news->image, true); 
-
- //                // $imageSrc = $this->imageUrl . $this->disks[0] . '/' . $newsImage[1] . $this->exOrg; 
-
- //                // if (Storage::disk($this->disks[0])->has($newsImage[1]  . $this->exOrg) ){
-
- //                //     $newsImage = $imageSrc;
-
- //                // } else {
-
- //                //     $newsImage = 0; 
-
- //                // }
-
-
- //                // /**
- //                // *
- //                // *Check & generate links of imageGallery
- //                // *
- //                // */
- //                // $newsImages = json_decode($news->images, true);
- //                // $newsGallery = array(); 
-
- //                // if(is_array($newsImages)){
-
- //                //     foreach ($newsImages as $key => $value) {
-                        
- //                //         $newsGallery[] = $this->imageUrl . $this->disks[1] . '/' . $value . $this->exThu; 
-
- //                //     }
-
- //                // }
-
- //                // $d = $news->publicDate; 
-
- //                // if($d[0]=='0' & $d[1]=='0' & $d[2]=='0' & $d[3]=='0'  ){
-
- //                //     $publicDate = date('d-m-Y H:i');
-
- //                // }
- //                // else{
-
- //                //     $pd = date_create($news->publicDate);
- //                //     $publicDate  = date_format( $pd , 'd-m-Y H:i');
-
- //                // }
-
-
- //                // $news->publicDate = $publicDate;
-
-
-
- //                return response()->view('auth.layouts.newsEdit',[
-
- //                                             'news'        =>$news,
- //                                             'newsCat'     =>$newsCat,
- //                                             'newsImage'   =>Helper::getImage($news, 'news'),
- //                                             'newsGallery' =>Helper::getGallery($news, 'newsGallery'),
-                                             
- //                                         ])->withCookie(cookie('ne', $request->route('slug')));
-
-
- //            }else{
-
- //                return redirect()->route('admin');
-
- //            }
-     
-            
- //        } 
- //        else{
-
- //            return redirect()->route('admin');
-
- //        }
-
-
-
- //    }
-
-
-
-	// public function postNewsEdit(Request $request){
-
- // 		$slug = $request->cookie('ne');
-
- //       if($request->has('catid')) {
-
- //            $this->validate($request, [
-
- //                'catid'       =>'required|exists:news_cat,id',
-	// 			'title'       =>'required|min:5|max:100',
-	// 			'intro'       =>'required|min:5|max:300'
-	// 			// 'description' =>'required|min:20',
-                
-                
- //            ]);
-
-
- //            if(strlen($request['publicDate'])>5) {
-
- //                $pd = date_create($request['publicDate']);
-
-
- //                $publicDate = date_format($pd, 'Y-m-d H:i:s');
-           
- //                $out = news::where('slug', '=', $slug)->update(array(
-
- //                    'title'       =>trim($request['title']), 
- //                    'intro'       =>trim($request['intro']),
- //                    'description' =>trim($request['description']),
- //                    'userid'      =>$this->userid,
- //                    'catid'       =>$request['catid'],
- //                    'publicDate'  =>$publicDate,
- //                    'public'      => $request['public'],
-
-
- //                ));
-
- //                if ($out==1) {
-
- //                    return redirect()->route('getNewsEdit', [ 'slug' => $slug ] );
-
- //                }
-
- //            }
-
- //        }
-
-     
-
-
-
-
- //        if($request->file('news')){
-        
- //            $UI       = new UploadImage();
- //            $disk     = 'news';
- //            $file     = $request->file('news');
- //            $fileName = md5(rand(1000, 50000).date('d-m-Y-G-i-s'));
-
- //            $image =  $UI->save(500, 0, 1000, 0, $disk, $file, $fileName);
-
- //            $out = news::where('slug', '=', $slug)->update(array(
-
- //                'image'        => json_encode( array( '1'=>$image['imageName'])),
- //                'userid'       => $this->userid
-
- //            ));
-        
- //            return response()->json($image);
-        
- //        }
-
-
- //        if($request->file('newsGallery')){
-
-
- //            $UI       = new UploadImage();
- //            $disk     = 'newsGallery';
- //            $file     = $request->file('newsGallery');
- //            $fileName = md5(rand(1000, 50000).date('d-m-Y-G-i-s'));
-
- //            $newImage =  $UI->save(0, 150, 1000, 0, $disk, $file, $fileName);
-
- //            $galleryImages =  news::where('slug', '=', $slug)->value('images'); 
-
- //            if (strlen($galleryImages) > 5){
-
- //                $galleryImagesArr = json_decode($galleryImages, true); 
-
- //                if(is_array($galleryImagesArr)){
-
- //                    array_push($galleryImagesArr,  $newImage['imageName']); 
-
- //                    news::where('slug', '=', $slug)->update(array(
-
- //                        'images'        => json_encode( $galleryImagesArr ),
- //                        'userid'        => $this->userid
-
- //                    ));
-
- //                }
-
-
-
- //            }else {
-
- //                news::where('slug', '=', $slug)->update(array(
-
- //                    'images'       =>  json_encode( array( '1'=>$newImage['imageName'] )),
- //                    'userid'       =>  $this->userid
-
- //                ));
-
- //            }
-
-            
- //            return response()->json($newImage);
-        
- //        }
-
-
- //        if($request->input('delImage')){
-
-
- //            $image =  news::where('slug', '=', $slug)->value('image'); 
-
- //            if (strlen($image) > 1){
-
- //                $imageArr = json_decode($image, true); 
-
- //                foreach ($request->input('delImage') as $k => $v) {
-
-             
- //                    //get imageID
- //                    preg_match("/[\/]{1}([A-Za-z0-9]+)[\.]jpg/", $v, $o);
- //                    $imageID = str_replace('thu', '', $o[1]);
-
-
- //                    //delete imageID from Arr
- //                    if (in_array($imageID, $imageArr)){
-
- //                        $giKey = array_search($imageID, $imageArr); 
-
- //                        unset( $imageArr[$giKey] ); 
-
-                   
- //                        // delete thumb, full image 
- //                        Storage::Delete( str_replace('thu', '', $v) ); 
- //                        Storage::Delete( $v ); 
-
- //                        $response[] = $v; 
-
- //                    }
-                   
-              
- //                }
-
- //                    //update db table images
- //                    if (!empty($imageArr)){
-
- //                        $image = json_encode( $imageArr ); 
-
- //                    }else{
-
- //                        $image = ''; 
-
- //                    }
-
-
- //                    news::where('slug', '=', $slug)->update(array(
-
- //                        'image'        => $image,
- //                        'userid'        => $this->userid
-
- //                    ));
-
-
- //            return response($response);
-
- //            }
-
- //        }  
-
- //        if($request->input('delImages')){
-
-
- //            $galleryImages =  news::where('slug', '=', $slug)->value('images'); 
-
- //            if (strlen($galleryImages) > 5){
-
- //                $galleryImagesArr = json_decode($galleryImages, true); 
-
- //                foreach ($request->input('delImages') as $k => $v) {
-
-             
- //                    //get imageID
- //                    preg_match("/[\/]{1}([A-Za-z0-9]+)[\.]jpg/", $v, $o);
- //                    $imageID = str_replace('thu', '', $o[1]);
-
-
- //                    //delete imageID from Arr
- //                    if (in_array($imageID, $galleryImagesArr)){
-
- //                        $giKey = array_search($imageID, $galleryImagesArr); 
-
- //                        unset( $galleryImagesArr[$giKey] ); 
-
-                   
- //                        // delete thumb, full image 
- //                        Storage::Delete( str_replace('thu', '', $v) ); 
- //                        Storage::Delete( $v ); 
-
- //                        $response[] = $v; 
-
- //                    }
-                   
-              
- //                }
-
- //                    //update db table images
- //                    if (!empty($galleryImagesArr)){
-
- //                        $images = json_encode( $galleryImagesArr ); 
-
- //                    }else{
-
- //                        $images = ''; 
-
- //                    }
-
-
- //                    news::where('slug', '=', $slug)->update(array(
-
- //                        'images'        => $images,
- //                        'userid'        => $this->userid
-
- //                    ));
-
-
- //            return response($response);
-
- //            }
-
- //        }
-
-	// }
-
-
-
-
 
 
 

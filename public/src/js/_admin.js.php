@@ -1,3 +1,5 @@
+<script type="text/javascript">
+
 var chId = 0; var chName; var chIdVal; var x = 0;  
 
 var sisp = ""
@@ -440,18 +442,15 @@ $(document).ready(function(){
 
 	$('#rse_close').click(function(){
 
+		$('#xd1').html("")
+		$('#xm1').html("")
+		$('#xy1').html("")
+		 
+		$('#xd2').html("")
+		$('#xm2').html("")
+		$('#xy2').html("")
 
-				$('#xd1').html("")
-				$('#xm1').html("")
-				$('#xy1').html("")
-				 
-				$('#xd2').html("")
-				$('#xm2').html("")
-				$('#xy2').html("")
-
-				$('#xdateSpecExp').val("00-00-0000");
-
-
+		$('#xdateSpecExp').val("00-00-0000");
 
 	})
 
@@ -460,14 +459,45 @@ $(document).ready(function(){
 
 	// Archive
 
-	$('#btn_show_archive_box').click(function(){
+
+	//add 
+	$('#btn_show_add_archive').click(function(){
+
+		$('#cont_add_archive').show()
+
+		$('#archive_box').show()
+
+	})
+
+	//from
+	$('#btn_show_from_archive').click(function(){
+
+		$('#cont_from_archive').show()
 
 		$('#archive_box').show()
 
 	})
 
 
+	//return
+	$('#btn_show_return_archive').click(function(){
+
+		$('#cont_return_archive').show()
+
+		$('#archive_box').show()
+
+	})
+
+
+
+
 	$('#close_archive_box').click(function(){ 
+
+		$('#cont_from_archive').hide()
+
+		$('#cont_return_archive').hide()
+
+		$('#cont_add_archive').hide()
 
 		$('#archive_box').hide()
 
@@ -478,8 +508,7 @@ $(document).ready(function(){
 	})
 
 	// add to Archive
-
-	$('#btn_add_to_archive').click(function(){
+	$('#btn_add_archive').click(function(){
 
 		$.ajax({
 
@@ -527,12 +556,6 @@ $(document).ready(function(){
 			}
 
 		});		
-
-
-
-
-
-
 	})
 
 
@@ -559,42 +582,46 @@ $(document).ready(function(){
 			}
 
 		});		
+    })
 
 
 
+	$('#btn_return_archive').click(function(){
 
+		$.ajax({
 
+			headers:
+		    { 'X-CSRF-TOKEN': token },
+			url:'/auth/admin/returnArchive',
+			method:'POST',
+			//async: false,
+			data: {'tid': $('#tid').val() },
+			// dataType:'json',
+			error: function(){
 
-	})
+				
+			},
+			success: function(e){
 
+				if(e==1){
 
+					document.location.href = 'http://ok/auth/admin/'
 
+				}
 
-    //check disabled form
-   //  setInterval(function(){
-
-   //  	if($('#invcat').val()>0){
-
-			// $('#invtypeDisp').show();
-
-		
-   //  	}else{
-
+				
 			
-			// $('#invtypeDisp').hide();
-   //  	}
+			}
 
-
-   //  }, 1000)
-
-
-
+		});		
+    })
 
 
 
 });
 
 
+</script>
 
 
 

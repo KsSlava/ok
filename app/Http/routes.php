@@ -157,6 +157,16 @@ Route::group(['middleware'=>['auth', 'no-cache']], function(){
 
 
 
+    Route::post('/auth/admin/returnArchive', [
+
+        'as'=>'returnArchive',
+        'uses'=>'personal@returnArchive'
+
+    ]);
+
+
+
+
     /*Happy bithdays*/
     Route::get('/auth/admin/hb/{sd?}/{print?}', [
 
